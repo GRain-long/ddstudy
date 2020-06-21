@@ -81,8 +81,8 @@ public class RebuildBinaryTree {
         } else {
             // 关键在于 start end的计算
             // pre的start 计算非常麻烦
-            // pre的start需要计算出 left消耗了多少前序的结点【递归建立，它把左子树群都建立好了才进行右子树建树的】。
-            //                                left消耗的结点数目就是letf左子树群的结点总数 = mid-1-istart+1
+            // pre的start需要计算出 left消耗了多少前序的结点【递归建立，它把左子树群都建立好了才进行右子树建树的，左子树群建立的过程需要确定一系列的父节点，所以需要消耗pre中的点】。
+            //                                left消耗的结点数目就是lef左子树群的结点总数 = mid-1-istart+1
             //                                保姆级解释：treeNode.left = reconstruct(pre, in, pstart + 1, pend, istart, mid - 1);
             //                                           这个递归进去了，会为treeNode接上一个完整的二叉树，而这个二叉树的结点总数是：它分到的左子树群的结点数目。
             //                                           这个结点数目就是 istart~点-1 即 istart~mid-1【mid是父节点的位置】

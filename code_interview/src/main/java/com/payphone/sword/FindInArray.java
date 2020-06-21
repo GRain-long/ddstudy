@@ -36,13 +36,14 @@ public class FindInArray {
      * 不唯一，加大了解题难度！
      * <p>
      * 用右上角或左下角为起始点进行查找。
-     * 以右下角为例子。
-     * 大于 number 向左边走。
+     * 以左下角为例子。
+     * 大于 number 向右边走。
      * 小于 number 向上走。
      * 就这样一直走下去，直到找到元素 或 元素不符合要求
+     * </p>
      */
     public boolean Find2(int target, int[][] array) {
-        if(array.length==0 || array[0].length==0) return false;
+        if (array.length == 0 || array[0].length == 0) return false;
         int len = array.length;
         int row = len - 1, col = 0;
         while (row >= 0 && col < len) {
@@ -60,16 +61,49 @@ public class FindInArray {
     }
 
     /**
+     * 法三：每一行进行二分查找
+     */
+    public boolean Find3(int target, int[][] array) {
+        int time = array.length;
+        for (int i = 0; i < time; i++) {
+            if(-1 != binarySearch(target,array[i])){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 二分查找
+    private int binarySearch(int target, int[] arr) {
+        int start = 0, end = arr.length - 1;
+        while (start <= end) {
+            int mid = start + ((end - start) >> 1);
+            if (target == arr[mid]) {
+                return mid;
+            } else if (target < arr[mid]) {
+                // arr[mid]大了。
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+
+    /**
      * 看起来思路一很low 思路二很强是吧。
      * 你去牛客上测试 会发现 简单粗暴的解法速度比较稳定，
-     * 那个看起来很强的速度直接的差距很大。【当然，极大可能是受服务器性能的影响】
+     * 那个看起来很强的速度直接的差距很大。【当然，极大可能是受服务器性能的影响,还有数据的随机性】
      *
-     * 这或许是数组寻址造成的。 电脑有个高速缓存的概念。每次会把一大片数据加载cache中。
+     * 或许也是数组寻址造成的。 电脑有个高速缓存的概念。每次会把一大片数据加载cache中。
      * 数组也是如此，例如：一次把这一行【假设数组按行存取】的数据都加载进去。
-     * 发现这列没有我们要找的数据，又要     * 把其他的加载进来，这个操作是耗时的。
+     * 发现这列没有我们要找的数据，又要 把其他的加载进来，这个操作是耗时的。
      * 法一需要加载的次数一般是更少的，法二的加载次数一般是更多的。
      * 所以用平摊分析的测试方式进行测试，可能会出现 法一比法二快不少的情况。
      *
-     * 堆排序也存在这种情况。不符合程序的局部性原理【数据加载进cache】。
+     * 堆排序也存在这种情况。不符合程序的局部性原理，堆很大的话，极有可能每次需要交换的元素
+     * 都不再cache中，需要重新加载。
+     *
      */
 }

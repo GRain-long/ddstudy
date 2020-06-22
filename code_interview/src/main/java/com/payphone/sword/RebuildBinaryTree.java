@@ -33,7 +33,7 @@ public class RebuildBinaryTree {
      * 二叉树的遍历：
      * 前序遍历：根 左 右；最前面的是根结点，
      * 中序遍历：左 根 右：可以通过前序的结点，划分出 左右子树的结点集合
-     * 然后递归创建
+     * 然后递归创建：递归的终止条件是无子树则放回null，有则返回对应的结点
      */
     public TreeNode reConstructBinaryTree(int[] pre, int[] in) {
         TreeNode reconstruct = reconstruct(pre, in, 0, pre.length - 1, 0, in.length - 1);
@@ -50,8 +50,8 @@ public class RebuildBinaryTree {
      * @return 二叉树
      */
     private TreeNode reconstruct(int[] pre, int[] in, int pstart, int pend, int istart, int iend) {
-        if (pstart > pend) return null;
-        if (istart > iend) return null;
+//        if (pstart > pend) return null;
+//        if (istart > iend) return null;
         // 找到根结点
         int root = pre[pstart];
         // 找到根结点的左右子树群
@@ -66,8 +66,8 @@ public class RebuildBinaryTree {
         }
         // 可能左右子树只有一个有 可能都有 可能都没有 如何判断？
 
-        // 中序中没有发现 则无 & 根结点在中序的最左边 则无左孩子
-        if (mid == -1 || mid <= istart) {
+        // 中序中没有发现 则无 | 根结点在中序的最左边 则无左孩子 | 查找越界无左孩子
+        if (mid == -1 || mid <= istart || pstart > pend) {
             treeNode.left = null;
         } else {
             // 关键在于 start end的计算
@@ -75,8 +75,8 @@ public class RebuildBinaryTree {
             //                               in的计算比较简单 for循环里进行了划分istart~mid - 1
             treeNode.left = reconstruct(pre, in, pstart + 1, pend, istart, mid - 1);
         }
-        // 中序中没有发现 则无 & 根结点在中序的最右边 则无右孩子
-        if (mid == -1 || mid >= iend) {
+        // 中序中没有发现 则无 | 根结点在中序的最右边 则无右孩子 | 查找越界无右孩子
+        if (mid == -1 || mid >= iend || istart > iend) {
             treeNode.right = null;
         } else {
             // 关键在于 start end的计算
@@ -93,7 +93,6 @@ public class RebuildBinaryTree {
         }
         return treeNode;
     }
-
 
     class TreeNode {
         int val;

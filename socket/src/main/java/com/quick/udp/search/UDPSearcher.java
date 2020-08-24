@@ -54,7 +54,7 @@ public class UDPSearcher {
         DatagramPacket requestPacket = new DatagramPacket(requestDataBytes, requestDataBytes.length);
 
         // 20000端口, 广播地址
-        requestPacket.setAddress(InetAddress.getByName("2555.255.255.255"));
+        requestPacket.setAddress(InetAddress.getByName("255.255.255.255"));
         requestPacket.setPort(20000);
 
         // 发送数据

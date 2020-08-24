@@ -6,7 +6,8 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 
 /**
- * 用于搜索UDP消息
+ * 发送广播，提供消息的人接受到广播后会进行回复。
+ * 通过广播的方式，搜索到那些响应广播的人。
  */
 public class UDPSearcher {
     public static void main(String[] args) throws IOException {

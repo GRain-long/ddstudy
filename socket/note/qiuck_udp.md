@@ -56,8 +56,10 @@
 
 ## 局域网搜索
 - UDP接收消息并回送功能实现
-- UDP局域网广播发送实现
-- UDP局域网回送消息实现
+- UDP局域网广播发送消息
+- UDP局域网接收广播信息
+
+建议看UDPBroadcast 和 UDPListener再看UDPProvider+UDPSearcher
 
 UDP既是客户端又是服务端。即可发送消息也可接收消息。
 

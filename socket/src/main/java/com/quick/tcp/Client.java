@@ -45,8 +45,9 @@ public class Client {
         do {
             // 从键盘读取要发送的数据
             String sendMsg = consoleWriter.readLine();
-            clientSend.write(sendMsg);
-//            clientSend.newLine();
+            // 字符流写入数据 注意加换行符。服务器端接收用的readLine，读到换行符才算结束！不然会一次又一次的读下去！
+            clientSend.write(sendMsg+"\r\n");
+            // clientSend.newLine();
             clientSend.flush();
 
             String receive = serverRead.readLine();

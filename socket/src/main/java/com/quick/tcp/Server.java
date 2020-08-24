@@ -1,9 +1,6 @@
 package com.quick.tcp;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -39,18 +36,18 @@ public class Server {
             System.out.println("连接过来的客户端信息：" + socket.getInetAddress() + " P:" + socket.getLocalPort());
             try {
                 // 获得打印流，用于数据输出，服务器回送数据
-                PrintStream socketOutput = new PrintStream(socket.getOutputStream());
+                BufferedWriter socketOutput = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
                 // 获得输入流，用于接受客户端的数据
                 BufferedReader socketInput = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 do {
                     String str = socketInput.readLine();
                     if ("bytes".equalsIgnoreCase(str)) {
                         this.flag = false;
-                        socketOutput.println("byes");
+                        socketOutput.write("byes");
                     } else {
                         // 打印收到的数据
-                        System.err.println(str + "OK!");
-                        socketOutput.println("回送: " + str.length() + "10086");
+                        System.err.println("服务器已接收到数据：" + str);
+                        socketOutput.write("您发送的数据长度为: " + str.length());
                     }
                 } while (flag);
                 socketInput.close();

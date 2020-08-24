@@ -9,8 +9,13 @@
         <module name="socket" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="socket" target="1.5" />
+    <bytecodeTargetLevel target="11">
+      <module name="socket" target="8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ddstudy" options="" />
+    </option>
   </component>
 </project>

@@ -1,7 +1,9 @@
 package com.quick.tcp;
 
 import java.io.*;
-import java.net.*;
+import java.net.Inet4Address;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 public class Client {
     public static void main(String[] args) throws Exception {
@@ -13,7 +15,6 @@ public class Client {
         socket.connect(new InetSocketAddress(Inet4Address.getLocalHost(), 2222), 3000);
         System.out.println("已经向服务器发起了连接");
         System.out.println("客户端信息：" + socket.getLocalAddress() + ":" + socket.getLocalPort());
-
         try {
             // 发送数据
             todoMsg(socket);

@@ -6,11 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="socket" />
+        <module name="java_net" />
+        <module name="socket_quick_start" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
+      <module name="java_net" target="8" />
       <module name="socket" target="8" />
+      <module name="socket_quick_start" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

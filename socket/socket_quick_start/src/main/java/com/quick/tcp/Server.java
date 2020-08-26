@@ -48,6 +48,8 @@ public class Server {
                         // 打印收到的数据
                         System.err.println("服务器已接收到数据：" + str);
                         socketOutput.write("您发送的数据长度为: " + str.length());
+                        socketOutput.newLine();
+                        socketOutput.flush();
                     }
                 } while (flag);
                 socketInput.close();

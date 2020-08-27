@@ -12,6 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
       <module name="java_net" target="8" />
+      <module name="java_net_01" target="8" />
       <module name="socket" target="8" />
       <module name="socket_quick_start" target="8" />
     </bytecodeTargetLevel>

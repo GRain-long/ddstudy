@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ddstudy.iml" filepath="$PROJECT_DIR$/.idea/ddstudy.iml" />
-      <module fileurl="file://$PROJECT_DIR$/socket/java_net_01/java_net.iml" filepath="$PROJECT_DIR$/socket/java_net_01/java_net.iml" />
       <module fileurl="file://$PROJECT_DIR$/socket/socket.iml" filepath="$PROJECT_DIR$/socket/socket.iml" />
       <module fileurl="file://$PROJECT_DIR$/socket/socket_quick_start/socket_quick_start.iml" filepath="$PROJECT_DIR$/socket/socket_quick_start/socket_quick_start.iml" />
     </modules>

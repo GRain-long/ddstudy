@@ -69,19 +69,30 @@ public class Tree {
      */
     public void afterOrder(TreeNode node) {
         if (node == null) return;
-        TreeNode visit = null;
+        TreeNode visited = null;
         Stack<TreeNode> stack = new Stack<>();
-        while (!stack.empty() || node == null) {
+        while (!stack.empty() || node != null) {
             // 左子树一直入栈
-            if(node != null){
+            if (node != null) {
                 stack.push(node);
-                visit = node;
                 node = node.left;
-            }else{
+            } else {
                 /**
+                 * 拿栈顶元素
                  * 看出栈几次。如果是第一次，且无左右子树 则直接 操作
                  *           如果是第二次，且 忘了，下午书到了在看书
                  */
+                node = stack.peek();
+                if (node.right == null || node.right == visited) {
+                    // 无右子树 或右子树被访问过了，则此时node出栈，并记录该结点已经被访问。
+                    System.out.println(node.val);
+                    stack.pop();
+                    visited = node;
+                    node = null;
+                }else{
+                    // 右子树未被访问
+                    node = node.right;
+                }
             }
         }
     }

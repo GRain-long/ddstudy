@@ -5,7 +5,7 @@ package com.payphone.sword;
  * @date 2020/6/21 11:49
  * @Description 找出数组中的重复数字 但不可修改数组
  * 数组长度n+1 元素的值在1~n之间，不修改数组的内容，找出重复的数字
- *
+ * <p>
  * 此题不好测试，牛客没有对应的题。散列表的解题思路最简单粗暴。效率也不低。
  * 法二的解法较为灵活，是对二分查找的灵活运用，多加体会！
  */
@@ -58,7 +58,7 @@ public class DuplicateNumber2 {
                 start = mid + 1;
             } else if (numbers[mid] > target) {
                 // 大于 target向左边找
-                end = mid-1;
+                end = mid - 1;
             }
         }
         return -1;

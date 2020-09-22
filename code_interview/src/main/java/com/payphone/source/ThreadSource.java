@@ -15,7 +15,6 @@ public class ThreadSource {
         Thread thread = new Thread(new Demo());
         thread.isInterrupted();
         Thread.interrupted();
-        ThreadLocal
     }
 
 }

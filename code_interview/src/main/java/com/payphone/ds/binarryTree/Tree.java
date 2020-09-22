@@ -1,4 +1,4 @@
-package com.payphone.ds;
+package com.payphone.ds.binarryTree;
 
 
 import java.util.Stack;

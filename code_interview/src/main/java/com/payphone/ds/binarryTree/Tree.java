@@ -89,12 +89,11 @@ public class Tree {
                     stack.pop();
                     visited = node;
                     node = null;
-                }else{
+                } else {
                     // 右子树未被访问
                     node = node.right;
                 }
             }
         }
     }
-
 }
